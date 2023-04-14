@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import tailStyles from "~/styles/tailwind.css";
+
 export default function App() {
   return (
     <html lang="en">
@@ -25,3 +27,12 @@ export default function App() {
     </html>
   );
 }
+
+export const links = () => {
+  return [
+    {
+      rel: "stylesheet",
+      href: tailStyles,
+    },
+  ];
+};
