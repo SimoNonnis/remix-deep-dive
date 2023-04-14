@@ -8,6 +8,7 @@ import {
 } from "@remix-run/react";
 
 import tailStyles from "~/styles/tailwind.css";
+import MainNavigation from "./components/MainNavigation";
 
 export default function App() {
   return (
@@ -19,6 +20,9 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-gradient-to-r from-lime-400 to-lime-500 min-h-screen	">
+        <header>
+          <MainNavigation />
+        </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
