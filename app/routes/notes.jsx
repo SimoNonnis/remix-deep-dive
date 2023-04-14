@@ -1,14 +1,11 @@
-import { Link } from "@remix-run/react";
-
 import Title from "~/components/Title";
+import Link1 from "~/components/Link1";
 
 export default function NotesPage() {
   return (
     <main>
       <Title>Notes</Title>
-      <p>
-        <Link to="/">Home Page</Link>
-      </p>
+      <Link1 to="/">Home Page</Link1>
     </main>
   );
 }

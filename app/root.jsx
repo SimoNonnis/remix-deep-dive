@@ -18,7 +18,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-gradient-to-r from-lime-400 to-lime-500 min-h-screen	">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
