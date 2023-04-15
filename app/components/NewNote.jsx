@@ -1,6 +1,8 @@
+import { Form } from "@remix-run/react";
+
 export default function NewNote() {
   return (
-    <form
+    <Form
       method="post"
       className="max-w-lg mx-auto my-12 p-8 rounded-md bg-lime-300 shadow-md text-center"
     >
@@ -37,6 +39,6 @@ export default function NewNote() {
       <button className="shadow-md inline-block cursor-pointer	py-3 px-8 mt-8 rounded-3xl	 bg-lime-400 hover:bg-lime-500 font-bold  text-lime-700 disabled:bg-lime-400 disabled:cursor-not-allowed	disabled:text-lime-500">
         Add Note
       </button>
-    </form>
+    </Form>
   );
 }
