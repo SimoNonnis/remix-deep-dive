@@ -1,8 +1,10 @@
+import Title from "~/components/Title";
 import NewNote from "~/components/NewNote";
 
 export default function NotesPage() {
   return (
-    <main>
+    <main className="text-center mx-2">
+      <Title>My Notes</Title>
       <NewNote />
     </main>
   );
