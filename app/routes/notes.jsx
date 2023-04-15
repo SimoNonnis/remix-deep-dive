@@ -5,20 +5,16 @@ import { getStoredNotes, storeNotes } from "~/data/notes";
 
 import Title from "~/components/Title";
 import NewNote from "~/components/NewNote";
-import { links } from "~/root";
+import NoteList from "~/components/NoteList";
 
 export default function NotesPage() {
-  const notesList = useLoaderData();
+  const notes = useLoaderData();
 
   return (
     <main className="text-center mx-2">
       <Title>My Notes</Title>
       <NewNote />
-      <ul>
-        {notesList?.map((note) => (
-          <li>{note.title}</li>
-        ))}
-      </ul>
+      <NoteList notes={notes} />
     </main>
   );
 }
