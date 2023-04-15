@@ -1,6 +1,10 @@
-import { Form } from "@remix-run/react";
+import { Form, useNavigation } from "@remix-run/react";
 
 export default function NewNote() {
+  const navigation = useNavigation();
+
+  const isSubmitting = navigation.state !== "idle";
+
   return (
     <Form
       method="post"
@@ -36,8 +40,11 @@ export default function NewNote() {
         />
       </p>
 
-      <button className="shadow-md inline-block cursor-pointer	py-3 px-8 mt-8 rounded-3xl	 bg-lime-400 hover:bg-lime-500 font-bold  text-lime-700 disabled:bg-lime-400 disabled:cursor-not-allowed	disabled:text-lime-500">
-        Add Note
+      <button
+        disabled={isSubmitting}
+        className="shadow-md inline-block cursor-pointer	py-3 px-8 mt-8 rounded-3xl	 bg-lime-400 hover:bg-lime-500 font-bold  text-lime-700 disabled:bg-lime-400 disabled:cursor-not-allowed	disabled:text-lime-500"
+      >
+        {isSubmitting ? "Adding..." : "Add Note"}
       </button>
     </Form>
   );
