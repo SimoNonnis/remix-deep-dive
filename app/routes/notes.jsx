@@ -1,5 +1,5 @@
 import { redirect } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useRouteError } from "@remix-run/react";
 
 import { validateTitle } from "~/utils/validation.server";
 import { getStoredNotes, storeNotes } from "~/data/notes";
@@ -7,6 +7,7 @@ import { getStoredNotes, storeNotes } from "~/data/notes";
 import Title from "~/components/Title";
 import NewNote from "~/components/NewNote";
 import NoteList from "~/components/NoteList";
+import Link1 from "~/components/Link1";
 
 export default function NotesPage() {
   const notes = useLoaderData();
@@ -49,4 +50,18 @@ export async function action({ request }) {
   await storeNotes(updatedNotes);
 
   return redirect("/notes");
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  return (
+    <main className="text-center  p-4  bg-lime-300 block mx-auto ">
+      <Title>Error</Title>
+      <div>{error.message}</div>
+      <p>
+        <Link1 to="/">Back to safety</Link1>
+      </p>
+    </main>
+  );
 }
