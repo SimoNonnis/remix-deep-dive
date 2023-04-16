@@ -1,5 +1,9 @@
-import { redirect } from "@remix-run/node";
-import { useLoaderData, useRouteError } from "@remix-run/react";
+import { json, redirect } from "@remix-run/node";
+import {
+  useLoaderData,
+  useRouteError,
+  isRouteErrorResponse,
+} from "@remix-run/react";
 
 import { validateTitle } from "~/utils/validation.server";
 import { getStoredNotes, storeNotes } from "~/data/notes";
@@ -27,6 +31,11 @@ export const meta = () => {
 
 export async function loader() {
   const notesList = await getStoredNotes();
+
+  if (!notesList || notesList.length === 0) {
+    throw json({ message: "Could not find any notes" });
+  }
+
   return notesList;
 }
 
@@ -54,6 +63,19 @@ export async function action({ request }) {
 
 export function ErrorBoundary() {
   const error = useRouteError();
+  console.log("🚀 -> ErrorBoundary -> error: ", error.data.message);
+
+  if (isRouteErrorResponse(error)) {
+    return (
+      <main className="text-center  p-4  bg-lime-300 block mx-auto ">
+        <Title>Error</Title>
+        <div>{error.data.message}</div>
+        <p>
+          <Link1 to="/">Back to safety</Link1>
+        </p>
+      </main>
+    );
+  }
 
   return (
     <main className="text-center  p-4  bg-lime-300 block mx-auto ">
