@@ -1,6 +1,7 @@
 import { redirect } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
+import { validateTitle } from "~/utils/validation.server";
 import { getStoredNotes, storeNotes } from "~/data/notes";
 
 import Title from "~/components/Title";
@@ -33,7 +34,13 @@ export async function action({ request }) {
   const noteData = Object.fromEntries(formData);
   noteData.id = new Date().toISOString();
 
-  // TODO Add Validation
+  const formErrors = {
+    title: validateTitle(noteData.title),
+  };
+
+  if (Object.values(formErrors).some(Boolean)) {
+    return formErrors;
+  }
 
   const existingNotes = await getStoredNotes();
 

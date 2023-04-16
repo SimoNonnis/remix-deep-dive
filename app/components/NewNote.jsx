@@ -1,8 +1,10 @@
-import { Form, useNavigation } from "@remix-run/react";
+import { Form, useNavigation, useActionData } from "@remix-run/react";
+
+import FormError from "~/components/FormError";
 
 export default function NewNote() {
   const navigation = useNavigation();
-
+  const formErrors = useActionData();
   const isSubmitting = navigation.state !== "idle";
 
   return (
@@ -22,7 +24,7 @@ export default function NewNote() {
           required
         />
       </p>
-
+      <FormError>{formErrors?.title}</FormError>
       <p>
         <label
           htmlFor="content"
@@ -39,7 +41,7 @@ export default function NewNote() {
           required
         />
       </p>
-
+      <FormError>{formErrors?.content}</FormError>
       <button
         disabled={isSubmitting}
         className="shadow-md inline-block cursor-pointer	py-3 px-8 mt-8 rounded-3xl	 bg-lime-400 hover:bg-lime-500 font-bold  text-lime-700 disabled:bg-lime-400 disabled:cursor-not-allowed	disabled:text-lime-500"
