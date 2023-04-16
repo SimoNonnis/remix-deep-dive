@@ -8,7 +8,7 @@ export default function NewNote() {
   return (
     <Form
       method="post"
-      className="max-w-lg mx-auto my-12 p-8 rounded-md bg-lime-300 shadow-md text-center"
+      className="max-w-lg mx-auto my-7 p-8 rounded-md bg-lime-300 shadow-md text-center"
     >
       <p>
         <label htmlFor="title" className="block mb-2 font-bold text-lime-700">

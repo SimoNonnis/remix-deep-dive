@@ -3,7 +3,7 @@ export default function NoteList({ notes }) {
 
   return (
     <div>
-      <ul className="flex gap-4 	overflow-x-auto  mb-2 pt-3">
+      <ul className="flex justify-center	 gap-4 flex-wrap  mb-2 pt-3">
         {notes.map((note, index) => (
           <li
             key={note.id}
