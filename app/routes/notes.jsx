@@ -33,7 +33,7 @@ export async function loader() {
   const notesList = await getStoredNotes();
 
   if (!notesList || notesList.length === 0) {
-    throw json({ message: "Could not find any notes" });
+    throw json({ message: "Could not find any notes. Add your first one." });
   }
 
   return notesList;
@@ -63,16 +63,14 @@ export async function action({ request }) {
 
 export function ErrorBoundary() {
   const error = useRouteError();
-  console.log("🚀 -> ErrorBoundary -> error: ", error.data.message);
 
   if (isRouteErrorResponse(error)) {
     return (
-      <main className="text-center  p-4  bg-lime-300 block mx-auto ">
-        <Title>Error</Title>
-        <div>{error.data.message}</div>
-        <p>
-          <Link1 to="/">Back to safety</Link1>
-        </p>
+      <main className="text-center mx-2">
+        <NewNote />
+        <div className="text-lime-700">
+          <b className="text-orange-600  ">#</b> {error.data.message}
+        </div>
       </main>
     );
   }
