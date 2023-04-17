@@ -1,9 +1,16 @@
 import { json } from "@remix-run/node";
-import { Link, useRouteError, isRouteErrorResponse } from "@remix-run/react";
-import { getStoredNotes } from "~/data/notes";
+import {
+  Link,
+  useRouteError,
+  isRouteErrorResponse,
+  useLoaderData,
+} from "@remix-run/react";
+import { getNoteById } from "~/data/notes";
 import Title from "~/components/Title";
 
 export default function NoteDetailPage() {
+  const note = useLoaderData();
+
   return (
     <main className="max-w-xl	my-12 mx-auto	p-8 text-center rounded-3xl shadow-md	bg-blue-500 text-zinc-100">
       <header>
@@ -11,18 +18,17 @@ export default function NoteDetailPage() {
           <Link to="/notes" className="p-2">
             Back to notes
           </Link>
-          <Title>note.title</Title>
+          <Title>{note.title}</Title>
         </nav>
       </header>
-      <div className="whitespace-nowrap	">note.content</div>
+      <div className="whitespace-nowrap	">{note.content}</div>
     </main>
   );
 }
 
 export async function loader({ params }) {
-  const notesList = await getStoredNotes();
-  const selectedNote = notesList.find((note) => note.id === params.id);
-  console.log("🚀 -> loader -> selectedNote: ", selectedNote);
+  const selectedNote = await getNoteById(params.noteId);
+
   if (!selectedNote) {
     throw json({ message: "There was a problem loading this note." });
   }

@@ -13,3 +13,10 @@ export async function getStoredNotes() {
 export function storeNotes(notes) {
   return fs.writeFile("./notes.json", JSON.stringify({ notes: notes || [] }));
 }
+
+export async function getNoteById(noteId) {
+  const notesList = await getStoredNotes();
+  const selectedNote = await notesList.find((note) => note.id === noteId);
+
+  return selectedNote;
+}
