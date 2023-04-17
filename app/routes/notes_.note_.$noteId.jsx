@@ -14,7 +14,7 @@ export default function NoteDetailPage() {
   return (
     <main className="max-w-xl	my-12 mx-auto	p-8 text-center rounded-3xl shadow-md	bg-blue-500 text-zinc-100">
       <header>
-        <nav className="mt-4 mb-8">
+        <nav className="mb-8">
           <Link
             to="/notes"
             className="block p-2 underline hover:no-underline mb-4"
