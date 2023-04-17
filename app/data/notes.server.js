@@ -23,7 +23,7 @@ export async function getNoteById(noteId) {
 
 export async function deleteNote(noteId) {
   const notesList = await getStoredNotes();
-  console.log("🚀 -> deleteNote -> notesList: ", notesList);
+  const updatedNotes = notesList.filter((note) => note.id !== noteId);
 
-  return null;
+  return storeNotes(updatedNotes);
 }
