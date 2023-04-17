@@ -9,7 +9,7 @@ export default function NoteList({ notes }) {
         {notes.map((note, index) => (
           <li
             key={note.id}
-            className="transition-all duration-300	ease-in-out w-80	 rounded shado  bg-blue-500 hover:bg-blue-500 hover:-translate-y-1 text-zinc-100  p-6 "
+            className="relative transition-all duration-300	ease-in-out w-80	 rounded shado  bg-blue-500 hover:bg-blue-500 hover:-translate-y-1 text-zinc-100  p-6 "
           >
             <Link to={"note/" + note.id}>
               <article>
@@ -27,7 +27,9 @@ export default function NoteList({ notes }) {
                     </li>
                     <li>
                       <Form method="post">
-                        <button className="p-3 rounded-full">X</button>
+                        <button className="absolute -top-2 -right-2 w-7 h-7 bg-orange-600  leading-none	rounded-full">
+                          X
+                        </button>
                       </Form>
                     </li>
                   </ul>
