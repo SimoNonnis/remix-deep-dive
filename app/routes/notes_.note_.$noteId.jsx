@@ -29,6 +29,10 @@ export default function NoteDetailPage() {
   );
 }
 
+export const meta = ({ data }) => {
+  return [{ title: "Remix Deep Dive | Notes | Note | " + data.title }];
+};
+
 export async function loader({ params }) {
   const selectedNote = await getNoteById(params.noteId);
 

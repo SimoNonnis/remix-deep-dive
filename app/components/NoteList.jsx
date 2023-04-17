@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, Form } from "@remix-run/react";
 
 export default function NoteList({ notes }) {
   if (!notes) return null;
@@ -24,6 +24,11 @@ export default function NoteList({ notes }) {
                           year: "numeric",
                         })}
                       </time>
+                    </li>
+                    <li>
+                      <Form method="post">
+                        <button className="p-3 rounded-full">X</button>
+                      </Form>
                     </li>
                   </ul>
                   <h2 className="text-xl mb-1 text-left font-bold">
