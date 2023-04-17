@@ -11,7 +11,7 @@ export default function NoteList({ notes }) {
             key={note.id}
             className="transition-all duration-300	ease-in-out w-80	 rounded shado  bg-blue-500 hover:bg-blue-500 hover:-translate-y-1 text-zinc-100  p-6 "
           >
-            <Link to={`note/${note.id}`}>
+            <Link to={"note/" + note.id}>
               <article>
                 <header>
                   <ul className="text-sm flex justify-between	items-center	font-bold border-b-2	pb-2 mb-2 ">
