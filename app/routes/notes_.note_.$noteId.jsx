@@ -1,11 +1,11 @@
-import { json } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import {
   Link,
   useRouteError,
   isRouteErrorResponse,
   useLoaderData,
 } from "@remix-run/react";
-import { getNoteById } from "~/data/notes";
+import { getNoteById, deleteNote } from "~/data/notes.server";
 import Title from "~/components/Title";
 
 export default function NoteDetailPage() {
@@ -41,6 +41,12 @@ export async function loader({ params }) {
   }
 
   return selectedNote;
+}
+
+export async function action({ params }) {
+  await deleteNote(params.noteId);
+
+  return redirect("/notes");
 }
 
 export function ErrorBoundary() {

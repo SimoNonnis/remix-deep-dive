@@ -11,6 +11,12 @@ export default function NoteList({ notes }) {
             key={note.id}
             className="relative transition-all duration-300	ease-in-out w-80	 rounded shado  bg-blue-500 hover:bg-blue-500 hover:-translate-y-1 text-zinc-100  p-6 "
           >
+            <Form method="delete" action={"note/" + note.id}>
+              <button className="absolute -top-2 -right-2 w-8 h-8 bg-orange-600  leading-none	rounded-full">
+                X
+              </button>
+            </Form>
+
             <Link to={"note/" + note.id}>
               <article>
                 <header>
@@ -24,13 +30,6 @@ export default function NoteList({ notes }) {
                           year: "numeric",
                         })}
                       </time>
-                    </li>
-                    <li>
-                      <Form method="post">
-                        <button className="absolute -top-2 -right-2 w-7 h-7 bg-orange-600  leading-none	rounded-full">
-                          X
-                        </button>
-                      </Form>
                     </li>
                   </ul>
                   <h2 className="text-xl mb-1 text-left font-bold">

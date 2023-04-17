@@ -20,3 +20,10 @@ export async function getNoteById(noteId) {
 
   return selectedNote;
 }
+
+export async function deleteNote(noteId) {
+  const notesList = await getStoredNotes();
+  console.log("🚀 -> deleteNote -> notesList: ", notesList);
+
+  return null;
+}

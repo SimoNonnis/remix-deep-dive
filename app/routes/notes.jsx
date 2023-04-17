@@ -6,7 +6,7 @@ import {
 } from "@remix-run/react";
 
 import { validateTitle } from "~/utils/validation.server";
-import { getStoredNotes, storeNotes } from "~/data/notes";
+import { getStoredNotes, storeNotes } from "~/data/notes.server";
 
 import Title from "~/components/Title";
 import NewNote from "~/components/NewNote";
