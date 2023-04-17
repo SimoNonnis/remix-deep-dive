@@ -10,10 +10,10 @@ export default function NoteDetailPage() {
           <Link to="/notes" className="p-2">
             Back to notes
           </Link>
-          <Title>Single Note</Title>
+          <Title>note.title</Title>
         </nav>
       </header>
-      <div className="whitespace-nowrap	">Single note content</div>
+      <div className="whitespace-nowrap	">note.content</div>
     </main>
   );
 }
